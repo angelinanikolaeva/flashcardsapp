@@ -23,7 +23,7 @@
 }
 
 .words-tablerow {
-  border: 1px solid #ddd;
+  //   border: 1px solid #ddd;
   padding: 5px;
 }
 
@@ -31,7 +31,7 @@
 .words-table td {
   padding: 10px;
   text-align: center;
-  border-right: 1px solid #ddd;
+  //   border-right: 1px solid #ddd;
 }
 
 .words-table th {
@@ -70,9 +70,4 @@
     text-transform: uppercase;
     font-weight: bold;
   }
-}
-
-.table-icons {
-  color: black;
-  height: 10px;
 }

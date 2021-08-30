@@ -4,6 +4,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import CancelIcon from "@material-ui/icons/Cancel";
+import Button from "./Button";
 
 function WordsTable() {
   return (
@@ -28,13 +29,13 @@ function WordsTable() {
               <td align="right">
                 {word.isEdit ? (
                   <div class="table-buttons">
-                    <SaveIcon className="table-icons" />
-                    <CancelIcon className="table-icons" />
+                    <Button inner={SaveIcon} />
+                    <Button inner={CancelIcon} />
                   </div>
                 ) : (
                   <div class="table-buttons">
-                    <EditIcon className="table-icons" />
-                    <DeleteIcon className="table-icons" />
+                    <Button inner={EditIcon} />
+                    <Button inner={DeleteIcon} />
                   </div>
                 )}
               </td>
