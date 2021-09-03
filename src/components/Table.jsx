@@ -1,10 +1,7 @@
+import React from "react";
 import Words from "../assets/data/words.json";
 import "../components/Table.scss";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import SaveIcon from "@material-ui/icons/Save";
-import CancelIcon from "@material-ui/icons/Cancel";
-import Button from "./Button";
+import TableBody from "./TableBody";
 
 function WordsTable() {
   return (
@@ -21,25 +18,7 @@ function WordsTable() {
         </thead>
         <tbody className="words-tablebody">
           {Words.map((word) => (
-            <tr className="words-tablerow" key={word.id}>
-              <td>{word.english}</td>
-              <td align="right">{word.transcription}</td>
-              <td align="right">{word.russian}</td>
-              <td align="right">{word.tags}</td>
-              <td align="right">
-                {word.isEdit ? (
-                  <div class="table-buttons">
-                    <Button inner={SaveIcon} />
-                    <Button inner={CancelIcon} />
-                  </div>
-                ) : (
-                  <div class="table-buttons">
-                    <Button inner={EditIcon} />
-                    <Button inner={DeleteIcon} />
-                  </div>
-                )}
-              </td>
-            </tr>
+            <TableBody word={word} key={word.id} />
           ))}
         </tbody>
       </table>

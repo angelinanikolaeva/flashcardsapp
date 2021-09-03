@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Flashcard.scss";
 
 function Flashcard() {
+  const [isFlipped, setFlipped] = useState(false);
+  const flipChange = () => {
+    setFlipped(!isFlipped);
+  };
   return (
-    <div class="card">
-      <div class="card__inner">
-        <div class="card__face card__face--front">
+    <div className="card" onClick={flipChange}>
+      <div className={"card__inner" + (isFlipped ? " is-flipped" : "")}>
+        <div className="card__face card__face--front">
           <h2>Word</h2>
         </div>
-        <div class="card__face card__face--back">
-          <div class="card__content">
-            <div class="card__header">
-              <img src="pp.jpg" alt="" class="pp" />
+        <div className="card__face card__face--back">
+          <div className="card__content">
+            <div className="card__header">
+              {/* <img src="pp.jpg" alt="" className="pp" /> */}
               <h2>Word</h2>
             </div>
-            <div class="card__body">
+            <div className="card__body">
               <h3>Card topic + Transcription</h3>
               <p>Explanation + Translation</p>
             </div>

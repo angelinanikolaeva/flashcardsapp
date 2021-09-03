@@ -2,13 +2,14 @@ import React from "react";
 import "../components/Navbar.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowIcon from "@material-ui/icons/ArrowRightAlt";
+import MenuIcon from "@material-ui/icons/Menu";
 function Navbar() {
   return (
     <div className="wrapper">
       <nav>
         <input type="checkbox" id="show-search" />
         <input type="checkbox" id="show-menu" />
-        <label htmlFor="show-menu" class="menu-icon">
+        <label htmlFor="show-menu" className="menu-icon">
           .
         </label>
         <div className="content">
@@ -23,7 +24,7 @@ function Navbar() {
               <a href="#">About</a>
             </li>
             <li>
-              <a href="#" class="desktop-link">
+              <a href="#" className="desktop-link">
                 Features
               </a>
               <input type="checkbox" id="show-features" />
@@ -87,7 +88,7 @@ function Navbar() {
         <label htmlFor="show-search" className="search-icon">
           <SearchIcon fontSize="large" style={{ color: "#4f3a75" }} />
         </label>
-        <form action="#" class="search-box">
+        <form action="#" className="search-box">
           <input
             type="text"
             placeholder="Type Something to Search..."

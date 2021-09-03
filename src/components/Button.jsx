@@ -1,9 +1,10 @@
 import React from "react";
+import styles from "./Button.module.scss";
 
 function Button(props) {
   const Inner = props.inner;
   return (
-    <button>
+    <button {...props} className={styles.button}>
       <Inner></Inner>
     </button>
   );
