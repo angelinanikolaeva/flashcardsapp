@@ -2,7 +2,7 @@ import React from "react";
 import "../components/Navbar.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowIcon from "@material-ui/icons/ArrowRightAlt";
-import MenuIcon from "@material-ui/icons/Menu";
+
 function Navbar() {
   return (
     <div className="wrapper">
