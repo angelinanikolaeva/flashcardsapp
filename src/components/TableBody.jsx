@@ -7,48 +7,51 @@ import Button from "./Button";
 import Input from "./Input";
 
 function TableBody({ word }) {
-  //   const { english, russian, transcription, tags } = word;
+  const { english, russian, transcription, tags } = word;
   const initialState = {
-    english: word.english,
-    russian: word.russian,
-    transcription: word.transcription,
-    tags: word.tags,
+    english: english,
+    russian: russian,
+    transcription: transcription,
+    tags: tags,
   };
   const [isSelected, toogleSelected] = useState(false);
   const [value, setValue] = useState(initialState);
+  const handleChange = (e) => {
+    setValue((prevWord) => {
+      return { ...prevWord, [e.target.name]: e.target.value };
+    });
+  };
+  const handleCancel = () => {
+    toogleSelected(false);
+    setValue({ ...word });
+  };
   return (
     <tr className="words-tablerow">
       {isSelected ? (
         <>
           <td>
             <Input
-              onChange={(val) =>
-                setValue({ ...value, english: val.target.value })
-              }
+              onChange={handleChange}
               value={value.english}
+              name={"english"}
             />
           </td>
           <td>
             <Input
-              onChange={(val) =>
-                setValue({ ...value, transcription: val.target.value })
-              }
+              onChange={handleChange}
               value={value.transcription}
+              name={"transcription"}
             />
           </td>
           <td>
             <Input
-              onChange={(val) =>
-                setValue({ ...value, russian: val.target.value })
-              }
+              onChange={handleChange}
               value={value.russian}
+              name={"russian"}
             />
           </td>
           <td>
-            <Input
-              onChange={(val) => setValue({ ...value, tags: val.target.value })}
-              value={value.tags}
-            />
+            <Input onChange={handleChange} value={value.tags} name={"tags"} />
           </td>
         </>
       ) : (
@@ -69,13 +72,7 @@ function TableBody({ word }) {
                 toogleSelected(false);
               }}
             />
-            <Button
-              inner={CancelIcon}
-              onClick={(val) => {
-                setValue(initialState);
-                toogleSelected(false);
-              }}
-            />
+            <Button inner={CancelIcon} onClick={handleCancel} />
           </div>
         ) : (
           <div className="table-buttons">
