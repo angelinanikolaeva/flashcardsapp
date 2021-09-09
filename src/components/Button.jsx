@@ -4,7 +4,10 @@ import styles from "./Button.module.scss";
 function Button(props) {
   const Inner = props.inner;
   return (
-    <button {...props} className={styles.button}>
+    <button
+      {...props}
+      className={props.className ? props.className : styles.button}
+    >
       <Inner></Inner>
     </button>
   );

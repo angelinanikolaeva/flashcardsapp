@@ -1,6 +1,6 @@
 import React from "react";
-import Words from "../assets/data/words.json";
-import "../components/Table.scss";
+import Words from "../../assets/data/words.json";
+import "./Table.scss";
 import TableBody from "./TableBody";
 
 function WordsTable() {

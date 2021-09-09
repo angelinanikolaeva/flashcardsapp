@@ -1,21 +1,13 @@
 @import "/src/styles/colors";
 
-// * {
-//   margin: 0;
-//   padding: 0;
-// }
-
-// body {
-//   font-family: montserrat, sans-serif;
-//   width: 100%;
-//   min-height: 100vh;
-// }
-
 .card {
-  margin: 100px auto 0;
-  width: 400px;
-  height: 600px;
-  perspective: 1000px;
+  width: 20em;
+  height: 30em;
+  margin: auto;
+  // margin: 100px auto 0;
+  // width: 400px;
+  // height: 600px;
+  // perspective: 1000px;
 
   &__inner {
     width: 100%;

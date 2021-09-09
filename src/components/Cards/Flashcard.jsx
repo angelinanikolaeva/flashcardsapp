@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import "./Flashcard.scss";
 
 function Flashcard(props) {
-  const { english, transcription, russian, tags } = props;
+  const { english, transcription, russian, tags, index, slide } = props;
   const [isFlipped, setFlipped] = useState(false);
   const flipChange = () => {
     setFlipped(!isFlipped);
   };
+  // const [isActive, setActive] = useState(false);
   return (
-    <div className="card" onClick={flipChange}>
-      <div className={"card__inner" + (isFlipped ? " is-flipped" : "")}>
+    <div
+      className={
+        slide === index + 1 ? "slide card active-anim " : "slide card "
+      }
+      onClick={flipChange}
+    >
+      <div className={"card__inner" + (isFlipped ? " is-flipped " : "")}>
         <div className="card__face card__face--front">
           <h2>{english}</h2>
         </div>
