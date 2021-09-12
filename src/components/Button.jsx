@@ -8,7 +8,7 @@ function Button(props) {
       {...props}
       className={props.className ? props.className : styles.button}
     >
-      <Inner></Inner>
+      <Inner style={props.innerstyle}></Inner>
     </button>
   );
 }

@@ -7,6 +7,9 @@ const CardInner = ({ index, data, word, isFlipped, flipChange }) => {
         <div className={"card__inner" + (isFlipped ? " is-flipped " : "")}>
           <div className="card__face card__face--front">
             <h2>{word.english}</h2>
+            <h3>
+              {index + 1}/{data.length}
+            </h3>
           </div>
           <div className="card__face card__face--back">
             <div className="card__content">
@@ -18,14 +21,14 @@ const CardInner = ({ index, data, word, isFlipped, flipChange }) => {
                 <h3>Тема/Topic: {word.tags}</h3>
                 <h3>Транскрипция: {word.transcription}</h3>
                 <h3>Перевод: {word.russian}</h3>
+                <h2>
+                  {index + 1}/{data.length}
+                </h2>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h3>
-        {index + 1}/{data.length}
-      </h3>
     </>
   );
 };
