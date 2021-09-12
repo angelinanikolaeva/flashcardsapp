@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Card.scss";
+import CardInner from "./CardInner";
 import Button from "../Button";
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 
@@ -8,64 +9,44 @@ const Card = ({ data }) => {
   const flipChange = () => {
     setFlipped(!isFlipped);
   };
-  const [slide, setSlide] = useState(1);
-
-  useEffect(() => {
-    if (slide > data.length) {
-      setSlide(0);
-    }
-  }, [slide, data]);
+  const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    if (slide !== data.length) {
-      setSlide(slide + 1);
-    } else if (slide === data.length) {
-      setSlide(1);
-    }
+    setSlide(slide === data.length - 1 ? 0 : slide + 1);
+    setFlipped(false);
   };
   const prevSlide = () => {
-    if (slide !== 1) {
-      setSlide(slide - 1);
-    } else if (slide === 1) {
-      setSlide(data.length);
-    }
+    setSlide(slide === 0 ? data.length - 1 : slide - 1);
+    setFlipped(false);
   };
   return (
     <>
-      <div className="card" onClick={flipChange}>
-        <div className={"card__inner" + (isFlipped ? " is-flipped " : "")}>
-          <div className="card__face card__face--front">
-            <h2>{data[slide].english}</h2>
-          </div>
-          <div className="card__face card__face--back">
-            <div className="card__content">
-              <div className="card__header">
-                {/* <img src="pp.jpg" alt="" className="pp" /> */}
-                <h2>{data[slide].english}</h2>
-              </div>
-              <div className="card__body">
-                <h3>Тема/Topic: {data[slide].tags}</h3>
-                <h3>Транскрипция: {data[slide].transcription}</h3>
-                <h3>Перевод: {data[slide].russian}</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h3>
-        {slide}/{data.length}
-      </h3>
       <Button
         className="btn-slide next"
         onClick={nextSlide}
         inner={ArrowRight}
       />
-
       <Button
         className="btn-slide prev"
         onClick={prevSlide}
         inner={ArrowLeft}
       />
+      {data.map((word, index) => {
+        return (
+          <>
+            {index === slide && (
+              <CardInner
+                isFlipped={isFlipped}
+                word={word}
+                flipChange={flipChange}
+                data={data}
+                index={index}
+                key={data.id}
+              />
+            )}
+          </>
+        );
+      })}
     </>
   );
 };
