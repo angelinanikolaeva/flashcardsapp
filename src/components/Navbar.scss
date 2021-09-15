@@ -141,6 +141,7 @@
       opacity: 1;
       visibility: visible;
       transition: all 0.3s ease;
+      z-index: 100;
     }
   }
 }
@@ -212,7 +213,7 @@
     max-height: 0px;
     overflow: hidden;
   }
-  .content .links #show-features:checked ~ ul,
+  .content .links #show-game:checked ~ ul,
   .content .links #show-services:checked ~ ul,
   .content .links #show-items:checked ~ ul {
     max-height: 100vh;

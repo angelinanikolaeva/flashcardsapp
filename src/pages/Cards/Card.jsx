@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Card.scss";
 import CardInner from "./CardInner";
-import Button from "../Button";
+import Button from "../../components/Button";
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 import data from "../../assets/data/words.json";
 // import { dataApi } from "./data/api";

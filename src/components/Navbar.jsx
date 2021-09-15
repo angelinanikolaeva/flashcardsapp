@@ -2,6 +2,7 @@ import React from "react";
 import "../components/Navbar.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowIcon from "@material-ui/icons/ArrowRightAlt";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -14,74 +15,65 @@ function Navbar() {
         </label>
         <div className="content">
           <div className="logo">
-            <a href="#">VocaVoca</a>
+            <Link to="/">VocaVoca</Link>
           </div>
           <ul className="links">
             <li>
-              <a href="#">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="#" className="desktop-link">
-                Features
-              </a>
-              <input type="checkbox" id="show-features" />
-              <label htmlFor="show-features">Features</label>
+              <Link to="/game" className="desktop-link">
+                Game
+              </Link>
+              <input type="checkbox" id="show-game" />
+              <label htmlFor="show-game">Game</label>
               <ul>
                 <li>
-                  <a href="#">Drop Menu 1</a>
+                  <Link to="/">Drop Menu 1</Link>
                 </li>
                 <li>
-                  <a href="#">Drop Menu 2</a>
-                </li>
-                <li>
-                  <a href="#">Drop Menu 3</a>
-                </li>
-                <li>
-                  <a href="#">Drop Menu 4</a>
+                  <Link to="/">Drop Menu 2</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#" className="desktop-link">
+              <Link to="/" className="desktop-link">
                 Services
-              </a>
+              </Link>
               <input type="checkbox" id="show-services" />
               <label htmlFor="show-services">Services</label>
               <ul>
                 <li>
-                  <a href="#">Drop Menu 1</a>
+                  <Link to="/">Drop Menu 1</Link>
                 </li>
                 <li>
-                  <a href="#">Drop Menu 2</a>
+                  <Link to="/">Drop Menu 2</Link>
                 </li>
                 <li>
-                  <a href="#">Drop Menu 3</a>
-                </li>
-                <li>
-                  <a href="#" className="desktop-link">
+                  <Link to="/" className="desktop-link">
                     More Items
-                  </a>
+                  </Link>
                   <input type="checkbox" id="show-items" />
                   <label htmlFor="show-items">More Items</label>
                   <ul>
                     <li>
-                      <a href="#">Sub Menu 1</a>
+                      <Link to="/">Sub Menu 1</Link>
                     </li>
                     <li>
-                      <a href="#">Sub Menu 2</a>
+                      <Link to="/">Sub Menu 2</Link>
                     </li>
                     <li>
-                      <a href="#">Sub Menu 3</a>
+                      <Link to="/">Sub Menu 3</Link>
                     </li>
                   </ul>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Feedback</a>
+              <Link to="/">Feedback</Link>
             </li>
           </ul>
         </div>
