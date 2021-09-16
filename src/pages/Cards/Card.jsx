@@ -9,9 +9,12 @@ import data from "../../assets/data/words.json";
 const Card = () => {
   const [isFlipped, setFlipped] = useState(false);
   const flipChange = () => {
-    setFlipped(!isFlipped);
+    if (!isFlipped) {
+      setFlipped(true, setWordCount(wordCount + 1));
+    }
   };
   const [slide, setSlide] = useState(0);
+  const [wordCount, setWordCount] = useState(0);
 
   // useEffect(() => {
   //   dataApi().then((data) => {
@@ -41,22 +44,16 @@ const Card = () => {
         inner={ArrowLeft}
         innerstyle={{ fontSize: "10em" }}
       />
-      {data.map((word, index) => {
-        return (
-          <>
-            {index === slide && (
-              <CardInner
-                key={word.id}
-                isFlipped={isFlipped}
-                word={word}
-                flipChange={flipChange}
-                data={data}
-                index={index}
-              />
-            )}
-          </>
-        );
-      })}
+      <CardInner
+        key={data[slide].id}
+        isFlipped={isFlipped}
+        flipChange={flipChange}
+        data={data}
+        slide={slide}
+      />
+      <h1>
+        {wordCount}/{data.length}
+      </h1>
     </div>
   );
 };
