@@ -3,6 +3,7 @@ import "./App.scss";
 import Navbar from "../src/components/Navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Card from "../src/pages/Cards/Card";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Main />
           </div>
         </Route>
+        <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
   );

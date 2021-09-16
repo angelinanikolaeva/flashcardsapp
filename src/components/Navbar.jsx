@@ -2,6 +2,7 @@ import React from "react";
 import "../components/Navbar.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowIcon from "@material-ui/icons/ArrowRightAlt";
+import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -11,7 +12,7 @@ function Navbar() {
         <input type="checkbox" id="show-search" />
         <input type="checkbox" id="show-menu" />
         <label htmlFor="show-menu" className="menu-icon">
-          .
+          <MenuIcon />
         </label>
         <div className="content">
           <div className="logo">
@@ -40,7 +41,7 @@ function Navbar() {
               </ul>
             </li>
             <li>
-              <Link to="/" className="desktop-link">
+              <Link to="/serv" className="desktop-link">
                 Services
               </Link>
               <input type="checkbox" id="show-services" />
