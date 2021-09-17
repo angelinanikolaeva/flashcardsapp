@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Card.scss";
 import CardInner from "./CardInner";
 import Button from "../../components/Button";
@@ -7,6 +7,8 @@ import data from "../../assets/data/words.json";
 // import { dataApi } from "./data/api";
 
 const Card = () => {
+  const inputRef = useRef(null);
+  useEffect(() => inputRef.current && inputRef.current.focus());
   const [isFlipped, setFlipped] = useState(false);
   const flipChange = () => {
     if (!isFlipped) {
@@ -50,10 +52,14 @@ const Card = () => {
         flipChange={flipChange}
         data={data}
         slide={slide}
+        innerRef={inputRef}
       />
-      <h1>
-        {wordCount}/{data.length}
-      </h1>
+      <h2 className="card__wordcount">
+        Выучено:
+        <p>
+          {wordCount}/{data.length}
+        </p>
+      </h2>
     </div>
   );
 };

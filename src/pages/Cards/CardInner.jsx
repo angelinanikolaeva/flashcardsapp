@@ -1,10 +1,14 @@
 import React from "react";
 
-const CardInner = ({ slide, data, isFlipped, flipChange }) => {
+const CardInner = ({ innerRef, slide, data, isFlipped, flipChange }) => {
   return (
     <>
       <div className="card" onClick={flipChange}>
-        <div className={"card__inner" + (isFlipped ? " is-flipped " : "")}>
+        <div
+          className={"card__inner" + (isFlipped ? " is-flipped " : "")}
+          tabindex="0"
+          ref={innerRef}
+        >
           <div className="card__face card__face--front">
             <h2>{data[slide].english}</h2>
             <h3>
