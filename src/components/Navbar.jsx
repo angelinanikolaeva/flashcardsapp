@@ -1,8 +1,6 @@
 import React from "react";
 import "../components/Navbar.scss";
-import SearchIcon from "@material-ui/icons/Search";
-import ArrowIcon from "@material-ui/icons/ArrowRightAlt";
-import MenuIcon from "@material-ui/icons/Menu";
+import { Search, ArrowRight, Menu } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -12,7 +10,7 @@ function Navbar() {
         <input type="checkbox" id="show-search" />
         <input type="checkbox" id="show-menu" />
         <label htmlFor="show-menu" className="menu-icon">
-          <MenuIcon />
+          <Menu />
         </label>
         <div className="content">
           <div className="logo">
@@ -79,7 +77,7 @@ function Navbar() {
           </ul>
         </div>
         <label htmlFor="show-search" className="search-icon">
-          <SearchIcon fontSize="large" style={{ color: "#4f3a75" }} />
+          <Search fontSize="large" style={{ color: "#4f3a75" }} />
         </label>
         <form action="#" className="search-box">
           <input
@@ -88,7 +86,7 @@ function Navbar() {
             required
           />
           <button type="submit" className="go-icon">
-            <ArrowIcon fontSize="large" style={{ color: "#4f3a75" }} />
+            <ArrowRight fontSize="large" style={{ color: "#4f3a75" }} />
           </button>
         </form>
       </nav>

@@ -1,15 +1,12 @@
 import React from "react";
 import "./main.scss";
-// import Navbar from "../../components/Navbar";
-import Table from "../../components/Table/Table";
-// import Card from "../../components/Cards/Card";
+// import Table from "../Table/Table";
+import DataContainer from "../DataContainer";
 
 function Main() {
   return (
     <div className="main">
-      {/* <Navbar /> */}
-      {/* <Card /> */}
-      <Table />
+      <DataContainer name="main" />
     </div>
   );
 }

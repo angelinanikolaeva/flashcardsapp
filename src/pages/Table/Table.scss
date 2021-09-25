@@ -4,6 +4,7 @@
   display: flex;
   text-align: center;
   padding: 2rem 2rem;
+  justify-content: center;
 }
 .words-tablehead {
   background-color: $purple;
@@ -40,7 +41,17 @@
   font-size: 14px;
   letter-spacing: 1px;
 }
+.words-table-form {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
 
+.table-form-button {
+  padding: 0;
+}
 @media screen and (max-width: 600px) {
   .words-table {
     border: 0;
