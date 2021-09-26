@@ -1,8 +1,8 @@
 import React from "react";
 import "../components/Navbar.scss";
-import SearchIcon from "@material-ui/icons/Search";
-import ArrowIcon from "@material-ui/icons/ArrowRightAlt";
-import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import ArrowIcon from "@mui/icons-material/ArrowRightAlt";
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 function Navbar() {

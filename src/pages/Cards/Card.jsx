@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./Card.scss";
 import CardInner from "./CardInner";
 import Button from "../../components/Button";
-import { ArrowLeft, ArrowRight } from "@material-ui/icons";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import data from "../../assets/data/words.json";
 // import { dataApi } from "./data/api";
 
