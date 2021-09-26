@@ -34,18 +34,12 @@ const Card = () => {
   };
   return (
     <div className="card-container">
-      <Button
-        className="btn-slide next"
-        onClick={nextSlide}
-        inner={ArrowRight}
-        innerstyle={{ fontSize: "10em" }}
-      />
-      <Button
-        className="btn-slide prev"
-        onClick={prevSlide}
-        inner={ArrowLeft}
-        innerstyle={{ fontSize: "10em" }}
-      />
+      <Button className="btn-slide next" onClick={nextSlide}>
+        <ArrowRight style={{ fontSize: "10em" }} />
+      </Button>
+      <Button className="btn-slide prev" onClick={prevSlide}>
+        <ArrowLeft style={{ fontSize: "10em" }} />
+      </Button>
       <CardInner
         key={data[slide].id}
         isFlipped={isFlipped}

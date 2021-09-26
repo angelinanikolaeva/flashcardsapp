@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.scss";
 // import Navbar from "../../components/Navbar";
-import Table from "../../components/Table/Table";
+import Table from "../Table/Table";
 // import Card from "../../components/Cards/Card";
 
 function Main() {

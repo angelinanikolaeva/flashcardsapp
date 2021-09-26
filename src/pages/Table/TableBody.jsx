@@ -3,8 +3,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
-import Button from "../Button";
-import Input from "../Input";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 
 function TableBody({ word }) {
   const { english, russian, transcription, tags } = word;
@@ -67,22 +67,28 @@ function TableBody({ word }) {
         {isSelected ? (
           <div className="table-buttons">
             <Button
-              inner={SaveIcon}
               onClick={() => {
                 toogleSelected(false);
               }}
-            />
-            <Button inner={CancelIcon} onClick={handleCancel} />
+            >
+              <SaveIcon />
+            </Button>
+            <Button onClick={handleCancel}>
+              <CancelIcon />
+            </Button>
           </div>
         ) : (
           <div className="table-buttons">
             <Button
-              inner={EditIcon}
               onClick={() => {
                 toogleSelected(true);
               }}
-            />
-            <Button inner={DeleteIcon} />
+            >
+              <EditIcon />
+            </Button>
+            <Button>
+              <DeleteIcon />
+            </Button>
           </div>
         )}
       </td>
