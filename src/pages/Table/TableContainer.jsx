@@ -38,6 +38,7 @@ function TableContainer() {
         setData={setData}
         newWord={newWord}
         handleInputChange={handleInputChange}
+        setNewWord={setNewWord}
       />
       {data?.length > 0 ? (
         <Table>
@@ -52,9 +53,11 @@ function TableContainer() {
           ))}
         </Table>
       ) : data ? (
-        <h2> No words </h2>
+        <h2 className="words-table-none"> No words </h2>
       ) : (
-        <Loader />
+        <div className="words-table-loader">
+          <Loader />
+        </div>
       )}
     </>
   );

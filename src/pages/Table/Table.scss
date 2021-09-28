@@ -52,6 +52,17 @@
 .table-form-button {
   padding: 0;
 }
+.words-table-none {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  font-size: 3rem;
+}
+.words-table-loader {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 600px) {
   .words-table {
     border: 0;

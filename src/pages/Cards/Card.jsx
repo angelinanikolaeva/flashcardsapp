@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import "./Card.scss";
 import CardInner from "./CardInner";
 import Button from "../../components/Button";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
-import data from "../../assets/data/words.json";
-// import { dataApi } from "./data/api";
 
 const Card = () => {
+  const [data, setData] = useLocalStorage("words", "");
   const inputRef = useRef(null);
   useEffect(() => inputRef.current && inputRef.current.focus());
   const [isFlipped, setFlipped] = useState(false);
@@ -18,11 +18,16 @@ const Card = () => {
   const [slide, setSlide] = useState(0);
   const [wordCount, setWordCount] = useState(0);
 
-  // useEffect(() => {
-  //   dataApi().then((data) => {
-  //     ...;
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/api/words")
+      .then((res) => res.json())
+      .then((json) => {
+        if (data === "") {
+          setData(json.words);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const nextSlide = () => {
     setFlipped(false);

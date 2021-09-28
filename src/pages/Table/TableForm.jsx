@@ -25,12 +25,7 @@ const TableForm = ({
 
   const submitForm = async (event) => {
     event.preventDefault();
-
-    // if (updating) {
-    //   updateMovie()
-    // } else {
     createWord();
-    // }
   };
 
   return (
