@@ -109,6 +109,16 @@
   &__wordcount {
     margin: -50px 0px 0px 80%;
   }
+  &__loader {
+    display: flex;
+    justify-content: center;
+  }
+  &__none {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin-top: 5%;
+  }
 }
 
 // .pp {
