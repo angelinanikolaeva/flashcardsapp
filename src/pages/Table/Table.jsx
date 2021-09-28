@@ -1,9 +1,4 @@
-import React from "react";
-import Words from "../../assets/data/words.json";
-import "./Table.scss";
-import TableBody from "./TableBody";
-
-function WordsTable() {
+function Table(props) {
   return (
     <div className="words-tablewrap">
       <table className="words-table">
@@ -16,14 +11,10 @@ function WordsTable() {
             <th align="right">Actions</th>
           </tr>
         </thead>
-        <tbody className="words-tablebody">
-          {Words.map((word) => (
-            <TableBody word={word} key={word.id} />
-          ))}
-        </tbody>
+        <tbody className="words-tablebody">{props.children}</tbody>
       </table>
     </div>
   );
 }
 
-export default WordsTable;
+export default Table;

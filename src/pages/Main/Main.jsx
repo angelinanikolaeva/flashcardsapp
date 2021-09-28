@@ -1,7 +1,7 @@
 import React from "react";
 import "./main.scss";
 // import Navbar from "../../components/Navbar";
-import Table from "../Table/Table";
+import TableContainer from "../Table/TableContainer";
 // import Card from "../../components/Cards/Card";
 
 function Main() {
@@ -9,7 +9,7 @@ function Main() {
     <div className="main">
       {/* <Navbar /> */}
       {/* <Card /> */}
-      <Table />
+      <TableContainer />
     </div>
   );
 }

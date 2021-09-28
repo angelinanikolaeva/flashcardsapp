@@ -6,7 +6,7 @@ const CardInner = ({ innerRef, slide, data, isFlipped, flipChange }) => {
       <div className="card" onClick={flipChange}>
         <div
           className={"card__inner" + (isFlipped ? " is-flipped " : "")}
-          tabindex="0"
+          tabIndex="0"
           ref={innerRef}
         >
           <div className="card__face card__face--front">

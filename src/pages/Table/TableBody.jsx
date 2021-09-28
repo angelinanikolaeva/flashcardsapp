@@ -6,7 +6,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 
-function TableBody({ word }) {
+function TableBody({ word, data, setData, wordId }) {
   const { english, russian, transcription, tags } = word;
   const initialState = {
     english: english,
@@ -16,15 +16,45 @@ function TableBody({ word }) {
   };
   const [isSelected, toogleSelected] = useState(false);
   const [value, setValue] = useState(initialState);
+
   const handleChange = (e) => {
     setValue((prevWord) => {
       return { ...prevWord, [e.target.name]: e.target.value };
     });
   };
+
+  const updateWord = async () => {
+    try {
+      const res = await fetch(`/api/words/${wordId}`, {
+        method: "PATCH",
+        body: JSON.stringify(value),
+      });
+      const json = await res.json();
+
+      const dataCopy = [...data];
+      const index = data.findIndex((m) => m.id === wordId);
+      dataCopy[index] = json.word;
+      setData(dataCopy);
+      toogleSelected(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteWord = async () => {
+    try {
+      await fetch(`/api/words/${wordId}`, { method: "DELETE" });
+      setData(data.filter((m) => m.id !== wordId));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleCancel = () => {
     toogleSelected(false);
     setValue({ ...word });
   };
+
   return (
     <tr className="words-tablerow">
       {isSelected ? (
@@ -66,11 +96,7 @@ function TableBody({ word }) {
       <td align="right">
         {isSelected ? (
           <div className="table-buttons">
-            <Button
-              onClick={() => {
-                toogleSelected(false);
-              }}
-            >
+            <Button onClick={updateWord}>
               <SaveIcon />
             </Button>
             <Button onClick={handleCancel}>
@@ -86,7 +112,7 @@ function TableBody({ word }) {
             >
               <EditIcon />
             </Button>
-            <Button>
+            <Button onClick={deleteWord}>
               <DeleteIcon />
             </Button>
           </div>
