@@ -4,22 +4,26 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Button from "../../components/Button";
-import Input from "../../components/Input";
+import { TextField } from "@mui/material";
+import useWordValidation from "../../hooks/useWordValidation";
 
 function TableBody({ word, data, setData, wordId }) {
   const { english, russian, transcription, tags } = word;
-  const initialState = {
+  const { errors, inputValidation } = useWordValidation();
+  const [isEditable, toogleEditable] = useState(false);
+  const [value, setValue] = useState({
     english: english,
     russian: russian,
     transcription: transcription,
     tags: tags,
-  };
-  const [isSelected, toogleSelected] = useState(false);
-  const [value, setValue] = useState(initialState);
+  });
 
   const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    inputValidation(name, value);
     setValue((prevWord) => {
-      return { ...prevWord, [e.target.name]: e.target.value };
+      return { ...prevWord, [name]: value };
     });
   };
 
@@ -35,7 +39,7 @@ function TableBody({ word, data, setData, wordId }) {
       const index = data.findIndex((m) => m.id === wordId);
       dataCopy[index] = json.word;
       setData(dataCopy);
-      toogleSelected(false);
+      toogleEditable(false);
     } catch (err) {
       console.log(err);
     }
@@ -51,37 +55,57 @@ function TableBody({ word, data, setData, wordId }) {
   };
 
   const handleCancel = () => {
-    toogleSelected(false);
+    toogleEditable(false);
     setValue({ ...word });
   };
 
   return (
     <tr className="words-tablerow">
-      {isSelected ? (
+      {isEditable ? (
         <>
           <td>
-            <Input
+            <TextField
+              error={errors.english[0]}
+              label={errors.english[0] ? errors.english[1] : " "}
+              id="standard-error"
+              variant="standard"
               onChange={handleChange}
-              value={value.english}
+              value={value.english || ""}
               name={"english"}
             />
           </td>
           <td>
-            <Input
+            <TextField
+              error={errors.transcription[0]}
+              label={errors.transcription[0] ? errors.transcription[1] : " "}
+              id="standard-error"
+              variant="standard"
               onChange={handleChange}
-              value={value.transcription}
+              value={value.transcription || ""}
               name={"transcription"}
             />
           </td>
           <td>
-            <Input
+            <TextField
+              error={errors.russian[0]}
+              label={errors.russian[0] ? errors.russian[1] : " "}
+              id="standard-error"
+              variant="standard"
               onChange={handleChange}
-              value={value.russian}
+              value={value.russian || ""}
               name={"russian"}
             />
           </td>
           <td>
-            <Input onChange={handleChange} value={value.tags} name={"tags"} />
+            <TextField
+              error={errors.tags[0]}
+              label={errors.tags[0] ? errors.tags[1] : " "}
+              id="standard-error"
+              variant="standard"
+              onChange={handleChange}
+              value={value.tags || ""}
+              name={"tags"}
+            />
           </td>
         </>
       ) : (
@@ -94,9 +118,12 @@ function TableBody({ word, data, setData, wordId }) {
       )}
 
       <td align="right">
-        {isSelected ? (
+        {isEditable ? (
           <div className="table-buttons">
-            <Button onClick={updateWord}>
+            <Button
+              onClick={updateWord}
+              disabled={Object.values(errors).some((x) => x[0] === true)}
+            >
               <SaveIcon />
             </Button>
             <Button onClick={handleCancel}>
@@ -105,11 +132,7 @@ function TableBody({ word, data, setData, wordId }) {
           </div>
         ) : (
           <div className="table-buttons">
-            <Button
-              onClick={() => {
-                toogleSelected(true);
-              }}
-            >
+            <Button onClick={toogleEditable}>
               <EditIcon />
             </Button>
             <Button onClick={deleteWord}>

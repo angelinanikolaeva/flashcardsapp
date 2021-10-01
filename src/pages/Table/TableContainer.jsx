@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import "./Table.scss";
 import TableBody from "./TableBody";
@@ -8,17 +8,6 @@ import Loader from "../../components/Loader";
 
 function TableContainer() {
   const [data, setData] = useLocalStorage("words", "");
-  const [newWord, setNewWord] = useState({
-    english: "",
-    transcription: "",
-    russian: "",
-    tags: "",
-  });
-  const handleInputChange = (e) => {
-    setNewWord((word) => {
-      return { ...word, [e.target.name]: e.target.value };
-    });
-  };
 
   useEffect(() => {
     fetch("/api/words")
@@ -33,18 +22,12 @@ function TableContainer() {
 
   return (
     <>
-      <TableForm
-        data={data}
-        setData={setData}
-        newWord={newWord}
-        handleInputChange={handleInputChange}
-        setNewWord={setNewWord}
-      />
+      <TableForm data={data} setData={setData} />
       {data?.length > 0 ? (
         <Table>
-          {data.map((word) => (
+          {data.map((word, index) => (
             <TableBody
-              key={word.id}
+              key={index + 1}
               word={word}
               data={data}
               setData={setData}
