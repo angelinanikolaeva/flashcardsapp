@@ -10,11 +10,17 @@ const Card = () => {
   const [data, setData] = useLocalStorage("words", "");
   const inputRef = useRef(null);
   useEffect(() => inputRef.current && inputRef.current.focus());
-  const [isFlipped, setFlipped] = useState(false);
+  const [isFlipped, setFlipped] = useState({});
   const flipChange = () => {
-    if (!isFlipped) {
-      setFlipped(true, setWordCount(wordCount + 1));
-    }
+    // if (!isFlipped) {
+    //   setFlipped(true, setWordCount(wordCount + 1));
+    // }
+    const newData = [...data];
+    const index = newData.findIndex((obj) => obj.id === data[slide].id);
+    newData[index].isFlipped = true;
+    setFlipped({ ...isFlipped, [index]: true });
+    // setData(newData);
+    setWordCount(wordCount + 1);
   };
   const [slide, setSlide] = useState(0);
   const [wordCount, setWordCount] = useState(0);
@@ -31,11 +37,11 @@ const Card = () => {
   }, []);
 
   const nextSlide = () => {
-    setFlipped(false);
+    // setFlipped(false);
     setSlide(slide === data.length - 1 ? 0 : slide + 1);
   };
   const prevSlide = () => {
-    setFlipped(false);
+    // setFlipped(false);
     setSlide(slide === 0 ? data.length - 1 : slide - 1);
   };
   return (
@@ -50,7 +56,7 @@ const Card = () => {
           </Button>
           <CardInner
             key={data[slide].id}
-            isFlipped={isFlipped}
+            isFlipped={isFlipped[slide]}
             flipChange={flipChange}
             data={data}
             slide={slide}
