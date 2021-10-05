@@ -8,7 +8,7 @@ const useWordValidation = () => {
     tags: [false, "Empty!"],
   });
   function inputValidation(name, value) {
-    if (value === "") {
+    if (value.trim() === "") {
       setError({ ...errors, [name]: [true, "Empty!"] });
     } else
       switch (name) {

@@ -110,10 +110,10 @@ function TableBody({ word, data, setData, wordId }) {
         </>
       ) : (
         <>
-          <td>{value.english}</td>
-          <td align="right">{value.transcription}</td>
-          <td align="right">{value.russian}</td>
-          <td align="right">{value.tags}</td>
+          <td>{english}</td>
+          <td align="right">{transcription}</td>
+          <td align="right">{russian}</td>
+          <td align="right">{tags}</td>
         </>
       )}
 
