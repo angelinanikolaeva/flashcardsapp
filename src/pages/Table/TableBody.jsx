@@ -27,31 +27,16 @@ function TableBody({ word, data, setData, wordId }) {
     });
   };
 
-  const updateWord = async () => {
-    try {
-      const res = await fetch(`/api/words/${wordId}`, {
-        method: "PATCH",
-        body: JSON.stringify(value),
-      });
-      const json = await res.json();
-
-      const dataCopy = [...data];
-      const index = data.findIndex((m) => m.id === wordId);
-      dataCopy[index] = json.word;
-      setData(dataCopy);
-      toogleEditable(false);
-    } catch (err) {
-      console.log(err);
-    }
+  const updateWord = () => {
+    const dataCopy = [...data];
+    const index = data.findIndex((m) => m.id === wordId);
+    dataCopy[index] = value;
+    setData(dataCopy);
+    toogleEditable(false);
   };
 
   const deleteWord = async () => {
-    try {
-      await fetch(`/api/words/${wordId}`, { method: "DELETE" });
-      setData(data.filter((m) => m.id !== wordId));
-    } catch (err) {
-      console.log(err);
-    }
+    setData(data.filter((m) => m.id !== wordId));
   };
 
   const handleCancel = () => {

@@ -1,24 +1,13 @@
-import { useEffect } from "react";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import "./Table.scss";
 import TableBody from "./TableBody";
 import TableForm from "./TableForm";
 import Table from "./Table";
 import Loader from "../../components/Loader";
+import { useUpdateWords, useWords } from "../../contexts/WordsContext";
 
 function TableContainer() {
-  const [data, setData] = useLocalStorage("words", "");
-
-  useEffect(() => {
-    fetch("/api/words")
-      .then((res) => res.json())
-      .then((json) => {
-        if (data === "") {
-          setData(json.words);
-        }
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const data = useWords();
+  const setData = useUpdateWords();
 
   return (
     <>
