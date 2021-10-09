@@ -7,8 +7,8 @@ import Button from "../../components/Button";
 import { TextField } from "@mui/material";
 import useWordValidation from "../../hooks/useWordValidation";
 
-function TableBody({ word, data, setData, wordId }) {
-  const { english, russian, transcription, tags } = word;
+function TableBody({ word, data, setData }) {
+  const { english, russian, transcription, tags } = word || {};
   const { errors, inputValidation } = useWordValidation();
   const [isEditable, toogleEditable] = useState(false);
   const [value, setValue] = useState({
@@ -19,6 +19,7 @@ function TableBody({ word, data, setData, wordId }) {
   });
 
   const handleChange = (e) => {
+    console.log(word);
     const name = e.target.name;
     const value = e.target.value;
     inputValidation(name, value);
@@ -29,15 +30,15 @@ function TableBody({ word, data, setData, wordId }) {
 
   const updateWord = async () => {
     try {
-      const res = await fetch(`/api/words/${wordId}`, {
-        method: "PATCH",
+      const res = await fetch(`/api/words/${word.id}/update`, {
+        method: "POST",
         body: JSON.stringify(value),
       });
       const json = await res.json();
-
+      console.log(json);
       const dataCopy = [...data];
-      const index = data.findIndex((m) => m.id === wordId);
-      dataCopy[index] = json.word;
+      const index = data.findIndex((m) => m.id === word.id);
+      dataCopy[index] = { ...value, id: word.id };
       setData(dataCopy);
       toogleEditable(false);
     } catch (err) {
@@ -47,8 +48,8 @@ function TableBody({ word, data, setData, wordId }) {
 
   const deleteWord = async () => {
     try {
-      await fetch(`/api/words/${wordId}`, { method: "DELETE" });
-      setData(data.filter((m) => m.id !== wordId));
+      await fetch(`/api/words/${word.id}/delete`, { method: "POST" });
+      setData(data.filter((m) => m.id !== word.id));
     } catch (err) {
       console.log(err);
     }

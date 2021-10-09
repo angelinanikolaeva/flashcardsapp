@@ -22,13 +22,18 @@ const TableForm = ({ data, setData }) => {
   };
   const createWord = async () => {
     try {
-      const res = await fetch("/api/words", {
+      const res = await fetch("/api/words/add", {
         method: "POST",
         body: JSON.stringify(newWord),
       });
       const json = await res.json();
-      setData([...data, json.word]);
-      setNewWord({ english: "", transcription: "", russian: "", tags: "" });
+      setData([...data, json]);
+      setNewWord({
+        english: "",
+        transcription: "",
+        russian: "",
+        tags: "",
+      });
     } catch (err) {
       console.log(err);
     }

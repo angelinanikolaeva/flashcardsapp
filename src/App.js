@@ -4,21 +4,24 @@ import Navbar from "../src/components/Navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Card from "../src/pages/Cards/Card";
 import NotFound from "./components/NotFound";
+import { WordsProvider } from "./contexts/WordsContext";
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route path="/about">About</Route>
-        <Route path="/game">
-          <Card />
-        </Route>
-        <Route exact path="/">
-          <div className="App">
-            <Main />
-          </div>
-        </Route>
+        <WordsProvider>
+          <Route path="/about">About</Route>
+          <Route path="/game">
+            <Card />
+          </Route>
+          <Route exact path="/">
+            <div className="App">
+              <Main />
+            </div>
+          </Route>
+        </WordsProvider>
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
