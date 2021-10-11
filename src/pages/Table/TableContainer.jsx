@@ -19,9 +19,9 @@ function TableContainer() {
         </div>
       ) : data?.length > 0 ? (
         <Table>
-          {data.map((word, index) => (
+          {data.map((word) => (
             <TableBody
-              key={index + 1}
+              key={word.id}
               word={word}
               data={data}
               setData={setData}
