@@ -10,7 +10,9 @@ export const useFetch = (url, options) => {
       try {
         const resp = await fetch(url, options);
         const dataApi = await resp.json();
-        setData(dataApi);
+        setData(
+          dataApi.filter((el) => Object.values(el).every((e) => e !== ""))
+        );
       } catch (e) {
         setError(e.message);
       } finally {

@@ -9,6 +9,7 @@ export const useWords = () => {
 
 export const WordsProvider = ({ children }) => {
   const { data, setData, error, isLoading } = useFetch("/api/words");
+
   return (
     <WordsContext.Provider value={{ data, setData, error, isLoading }}>
       {children}
