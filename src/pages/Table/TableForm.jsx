@@ -1,42 +1,23 @@
-import { useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { TextField } from "@mui/material";
 import Button from "../../components/Button";
 import useWordValidation from "../../hooks/useWordValidation";
 
-const TableForm = ({ data, setData }) => {
+const TableForm = ({
+  setNewWord,
+  newWord,
+  createWord,
+  isCreated,
+  setCreated,
+}) => {
   const { errors, setError, inputValidation } = useWordValidation();
-  const [newWord, setNewWord] = useState({
-    english: "",
-    transcription: "",
-    russian: "",
-    tags: "",
-  });
+
   const handleInputChange = (e) => {
+    setCreated("");
     const name = e.target.name;
     const value = e.target.value;
     inputValidation(name, value);
-    setNewWord((word) => {
-      return { ...word, [name]: value };
-    });
-  };
-  const createWord = async () => {
-    try {
-      const res = await fetch("/api/words/add", {
-        method: "POST",
-        body: JSON.stringify(newWord),
-      });
-      const json = await res.json();
-      setData([...data, json]);
-      setNewWord({
-        english: "",
-        transcription: "",
-        russian: "",
-        tags: "",
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    setNewWord({ ...newWord, [name]: value });
   };
 
   const submitForm = async (event) => {
@@ -100,6 +81,7 @@ const TableForm = ({ data, setData }) => {
       <Button type="submit" className="table-form-button">
         <AddCircleIcon fontSize="large" />
       </Button>
+      {isCreated && <p>{isCreated}</p>}
     </form>
   );
 };

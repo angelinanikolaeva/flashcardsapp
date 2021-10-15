@@ -7,11 +7,12 @@ import Button from "../../components/Button";
 import { TextField } from "@mui/material";
 import useWordValidation from "../../hooks/useWordValidation";
 
-function TableBody({ word, data, setData }) {
-  const { english, russian, transcription, tags } = word || {};
+function TableBody({ word, data, deleteWord, updateWord }) {
+  const { id, english, russian, transcription, tags } = word || {};
   const { errors, inputValidation } = useWordValidation();
   const [isEditable, toogleEditable] = useState(false);
   const [value, setValue] = useState({
+    id: id,
     english: english,
     russian: russian,
     transcription: transcription,
@@ -19,40 +20,12 @@ function TableBody({ word, data, setData }) {
   });
 
   const handleChange = (e) => {
-    console.log(word);
     const name = e.target.name;
     const value = e.target.value;
     inputValidation(name, value);
     setValue((prevWord) => {
       return { ...prevWord, [name]: value };
     });
-  };
-
-  const updateWord = async () => {
-    try {
-      const res = await fetch(`/api/words/${word.id}/update`, {
-        method: "POST",
-        body: JSON.stringify(value),
-      });
-      const json = await res.json();
-      console.log(json);
-      const dataCopy = [...data];
-      const index = data.findIndex((m) => m.id === word.id);
-      dataCopy[index] = { ...value, id: word.id };
-      setData(dataCopy);
-      toogleEditable(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const deleteWord = async () => {
-    try {
-      await fetch(`/api/words/${word.id}/delete`, { method: "POST" });
-      setData(data.filter((m) => m.id !== word.id));
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleCancel = () => {
@@ -122,7 +95,7 @@ function TableBody({ word, data, setData }) {
         {isEditable ? (
           <div className="table-buttons">
             <Button
-              onClick={updateWord}
+              onClick={() => updateWord(value)}
               disabled={Object.values(errors).some((x) => x[0] === true)}
             >
               <SaveIcon />
@@ -136,7 +109,7 @@ function TableBody({ word, data, setData }) {
             <Button onClick={toogleEditable}>
               <EditIcon />
             </Button>
-            <Button onClick={deleteWord}>
+            <Button onClick={() => deleteWord(id)}>
               <DeleteIcon />
             </Button>
           </div>

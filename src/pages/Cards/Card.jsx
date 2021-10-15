@@ -6,39 +6,42 @@ import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 import { useWords } from "../../contexts/WordsContext";
+import { observer } from "mobx-react-lite";
 
-const Card = () => {
-  const { data, setData, error, isLoading } = useWords();
+const Card = observer(() => {
+  const wordStore = useWords();
   const [isFlipped, setFlipped] = useState({});
   const inputRef = useRef(null);
   useEffect(() => inputRef.current && inputRef.current.focus());
 
   const flipChange = () => {
-    const newData = [...data];
-    const index = newData.findIndex((obj) => obj.id === data[slide].id);
-    newData[index].isFlipped = true;
+    // const newData = [...wordStore.words];
+    const index = wordStore.words.findIndex(
+      (obj) => obj.id === wordStore.words[slide].id
+    );
+    // newData[index].isFlipped = true;
     setFlipped({ ...isFlipped, [index]: true });
-    setData(newData);
+    // wordStore.setData(newData);
     setWordCount(wordCount + 1);
   };
   const [slide, setSlide] = useState(0);
   const [wordCount, setWordCount] = useState(0);
 
   const nextSlide = () => {
-    setSlide(slide === data.length - 1 ? 0 : slide + 1);
+    setSlide(slide === wordStore.words.length - 1 ? 0 : slide + 1);
   };
   const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1);
+    setSlide(slide === 0 ? wordStore.words.length - 1 : slide - 1);
   };
   return (
     <>
-      {error ? (
-        <Error message={error} />
-      ) : isLoading ? (
+      {wordStore.error ? (
+        <Error message={wordStore.error} />
+      ) : wordStore.isLoading ? (
         <div className="card__loader">
           <Loader />
         </div>
-      ) : data?.length > 0 ? (
+      ) : wordStore.words?.length > 0 ? (
         <div className="card-container">
           <Button className="btn-slide next" onClick={nextSlide}>
             <ArrowRight style={{ fontSize: "10em" }} />
@@ -47,17 +50,17 @@ const Card = () => {
             <ArrowLeft style={{ fontSize: "10em" }} />
           </Button>
           <CardInner
-            key={data[slide].id}
+            key={wordStore.words[slide].id}
             isFlipped={isFlipped[slide]}
             flipChange={flipChange}
-            data={data}
+            data={wordStore.words}
             slide={slide}
             innerRef={inputRef}
           />
           <h2 className="card__wordcount">
             Выучено:
             <p>
-              {wordCount}/{data.length}
+              {wordCount}/{wordStore.words.length}
             </p>
           </h2>
         </div>
@@ -66,6 +69,6 @@ const Card = () => {
       )}
     </>
   );
-};
+});
 
 export default Card;

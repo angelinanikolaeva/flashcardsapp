@@ -19,24 +19,24 @@ function Navbar() {
             <Link to="/">VocaVoca</Link>
           </div>
           <ul className="links">
-            <li>
+            {/* <li>
               <Link to="/">Home</Link>
-            </li>
+            </li> */}
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about">О нас</Link>
             </li>
             <li>
               <Link to="/game" className="desktop-link">
-                Game
+                Игра
               </Link>
               <input type="checkbox" id="show-game" />
-              <label htmlFor="show-game">Game</label>
+              <label htmlFor="show-game">Игра</label>
               <ul>
                 <li>
-                  <Link to="/">Drop Menu 1</Link>
+                  <Link to="/">Выпадающее1</Link>
                 </li>
                 <li>
-                  <Link to="/">Drop Menu 2</Link>
+                  <Link to="/">Выпадающее2</Link>
                 </li>
               </ul>
             </li>
@@ -45,20 +45,20 @@ function Navbar() {
                 Services
               </Link>
               <input type="checkbox" id="show-services" />
-              <label htmlFor="show-services">Services</label>
+              <label htmlFor="show-services">Услуги</label>
               <ul>
                 <li>
-                  <Link to="/">Drop Menu 1</Link>
+                  <Link to="/">Выпадающее1</Link>
                 </li>
                 <li>
-                  <Link to="/">Drop Menu 2</Link>
+                  <Link to="/">Выпадающее2</Link>
                 </li>
                 <li>
                   <Link to="/" className="desktop-link">
-                    More Items
+                    Еще
                   </Link>
                   <input type="checkbox" id="show-items" />
-                  <label htmlFor="show-items">More Items</label>
+                  <label htmlFor="show-items">Еще</label>
                   <ul>
                     <li>
                       <Link to="/">Sub Menu 1</Link>
@@ -74,7 +74,7 @@ function Navbar() {
               </ul>
             </li>
             <li>
-              <Link to="/">Feedback</Link>
+              <Link to="/">Контакты</Link>
             </li>
           </ul>
         </div>

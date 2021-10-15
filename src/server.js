@@ -1,51 +1,13 @@
-// import { createServer, Model } from "miragejs";
+// const express = require('express');
+// const cors = require('cors')
+// const app = express();
 
-// createServer({
-//   models: {
-//     word: Model,
-//   },
-//   seeds(server) {
-//     server.create("word", {
-//       english: "butterfly",
-//       transcription: "[ ˈbʌtəflaɪ ]",
-//       russian: "бабочка",
-//       tags: "животные",
-//       tags_json: '["животные"]',
-//     });
-//     server.create("word", {
-//       english: "hedgehog",
-//       transcription: "[ ˈhedʒhɒɡ ]",
-//       russian: "ёж",
-//       tags: "животные",
-//       tags_json: '["животные"]',
-//     });
-//     server.create("word", {
-//       english: "library",
-//       transcription: "[ ˈlaɪbrəri ]",
-//       russian: "библиотека",
-//       tags: "город",
-//       tags_json: '["город"]',
-//     });
-//   },
-//   routes() {
-//     this.namespace = "api";
+// app.use(cors());
 
-//     this.post("/words", (schema, request) => {
-//       let attrs = JSON.parse(request.requestBody);
-
-//       return schema.words.create(attrs);
-//     });
-
-//     this.patch("/words/:id", (schema, request) => {
-//       let newAttrs = JSON.parse(request.requestBody);
-//       let id = request.params.id;
-//       let word = schema.words.find(id);
-
-//       return word.update(newAttrs);
-//     });
-
-//     this.get("/words");
-//     this.get("/words/:id");
-//     this.del("/words/:id");
-//   },
+// app.use('/login', (req, res) => {
+//   res.send({
+//     token: 'test123'
+//   });
 // });
+
+// app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
