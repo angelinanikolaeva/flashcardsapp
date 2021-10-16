@@ -29,9 +29,19 @@
 
 .words-table th,
 .words-table td {
+  font: "Josefin Sans", sans-serif;
   padding: 10px;
   text-align: center;
   //   border-right: 1px solid #ddd;
+}
+td {
+  font: "Josefin Sans", sans-serif;
+  p {
+    margin-top: 23px;
+  }
+  input {
+    font: "Josefin Sans", sans-serif;
+  }
 }
 
 .words-table th {
@@ -40,7 +50,24 @@
   text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 1px;
+  margin-top: 0;
+  &:nth-child(1) {
+    width: 20%;
+  }
+  &:nth-child(2) {
+    width: 20%;
+  }
+  &:nth-child(3) {
+    width: 30%;
+  }
+  &:nth-child(4) {
+    width: 20%;
+  }
+  &:nth-child(5) {
+    width: 10%;
+  }
 }
+
 .words-table-form {
   display: flex;
   align-content: center;

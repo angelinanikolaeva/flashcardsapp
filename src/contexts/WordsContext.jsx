@@ -28,7 +28,7 @@ export const WordsProvider = ({ children }) => {
       russian: "",
       tags: "",
     },
-    isLoading: false,
+    isLoading: true,
     error: "",
     isCreated: "",
     /*actions*/
