@@ -47,6 +47,7 @@ const TableForm = ({
           value={newWord.english || ""}
           name="english"
           onChange={handleInputChange}
+          color="secondary"
         />
         <TextField
           error={errors.transcription[0]}
@@ -58,6 +59,7 @@ const TableForm = ({
           value={newWord.transcription || ""}
           name="transcription"
           onChange={handleInputChange}
+          color="secondary"
         />
         <TextField
           error={errors.russian[0]}
@@ -67,6 +69,7 @@ const TableForm = ({
           value={newWord.russian || ""}
           name="russian"
           onChange={handleInputChange}
+          color="secondary"
         />
         <TextField
           error={errors.tags[0]}
@@ -76,9 +79,10 @@ const TableForm = ({
           value={newWord.tags || ""}
           name="tags"
           onChange={handleInputChange}
+          color="secondary"
         />
       </div>
-      <Button type="submit" className="table-form-button">
+      <Button type="submit" className="words-table-form-button">
         <AddCircleIcon fontSize="large" />
       </Button>
       {isCreated && <p>{isCreated}</p>}

@@ -1,79 +1,101 @@
 @import "/src/styles/colors";
 
-.words-tablewrap {
+.words-table-container {
+  max-width: 1140px;
   display: flex;
-  text-align: center;
-  padding: 2rem 2rem;
-  justify-content: center;
-}
-.words-tablehead {
-  background-color: $textColor;
-  height: 50px;
-}
-.words-tablebody {
-  background-color: rgba(255, 255, 255, 0.15);
-  // @include background-opacity(darken($primaryColor, 10%), 0.7, 10px);
-  // @include background-blur($primaryColor, 10px);
-  // backdrop-filter: blur(5px);
-  // background-color: $backgroundColor;
-}
-
-.words-table {
-  border: 1px solid #ccc;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-.words-tablerow {
-  //   border: 1px solid #ddd;
-  padding: 5px;
-}
-
-.words-table th,
-.words-table td {
-  font: "Josefin Sans", sans-serif;
-  padding: 10px;
-  text-align: center;
-  //   border-right: 1px solid #ddd;
-}
-
-.words-table th {
-  color: #fff;
-  background-color: #444;
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 1px;
-  margin-top: 0;
-  &:nth-child(1) {
-    width: 20%;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+  .words-tablewrap {
+    display: flex;
+    text-align: center;
+    padding: 2rem 2rem;
+    justify-content: center;
+    .words-table {
+      background-color: $textColor;
+      border-collapse: separate;
+      border-radius: 6px;
+      border: 10px solid $textColor;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border-spacing: 0;
+      &head {
+        background-color: $textColor;
+        height: 50px;
+      }
+      &body {
+        background-color: $whiteColor;
+        .words-tablerow {
+          padding: 5px;
+          border-spacing: 0;
+          height: 70px;
+          td .MuiFormControl-root.MuiTextField-root {
+            .MuiInputBase-root.MuiInput-root {
+              margin-top: 0;
+              font-family: inherit;
+              .MuiInputBase-input.MuiInput-input {
+                text-align: center !important;
+              }
+            }
+          }
+        }
+      }
+      th,
+      td {
+        border-top: 2px solid $textColor;
+        padding: 10px;
+        text-align: center;
+      }
+      td:first-child,
+      th:first-child {
+        border-left: 5px solid $textColor;
+      }
+      th {
+        border-top: none;
+        color: $whiteColor;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+        margin-top: 0;
+        &:nth-child(1) {
+          width: 20%;
+        }
+        &:nth-child(2) {
+          width: 20%;
+        }
+        &:nth-child(3) {
+          width: 30%;
+        }
+        &:nth-child(4) {
+          width: 20%;
+        }
+        &:nth-child(5) {
+          width: 10%;
+        }
+      }
+    }
   }
-  &:nth-child(2) {
-    width: 20%;
-  }
-  &:nth-child(3) {
-    width: 30%;
-  }
-  &:nth-child(4) {
-    width: 20%;
-  }
-  &:nth-child(5) {
-    width: 10%;
+  .words-table-form {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin: 2rem 2rem;
+    color: $whiteColor;
+    font-family: inherit;
+    border-style: solid;
+    border-width: 2px 2px 2px 2px;
+    border-color: #940af3;
+    border-radius: 60px 60px 60px 60px;
+    height: 120px;
+    justify-content: center;
+    &-button {
+      padding: 0;
+      transform: scale(1.6);
+    }
   }
 }
 
-.words-table-form {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  margin: 2rem 2rem;
-}
-
-.table-form-button {
-  padding: 0;
-}
 .words-table-none {
   display: flex;
   justify-content: center;
@@ -101,7 +123,7 @@
     display: block;
     text-align: right;
     font-size: 13px;
-    border-bottom: 1px dotted #ccc;
+    // border-bottom: 1px dotted #ccc;
     border-right: 1px solid transparent;
   }
   .words-table td:last-child {

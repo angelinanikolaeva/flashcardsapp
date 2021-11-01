@@ -46,6 +46,7 @@ function TableBody({ word, deleteWord, updateWord }) {
               onChange={handleChange}
               value={value.english || ""}
               name={"english"}
+              color="secondary"
             />
           </td>
           <td>
@@ -57,6 +58,7 @@ function TableBody({ word, deleteWord, updateWord }) {
               onChange={handleChange}
               value={value.transcription || ""}
               name={"transcription"}
+              color="secondary"
             />
           </td>
           <td>
@@ -68,6 +70,7 @@ function TableBody({ word, deleteWord, updateWord }) {
               onChange={handleChange}
               value={value.russian || ""}
               name={"russian"}
+              color="secondary"
             />
           </td>
           <td>
@@ -79,19 +82,20 @@ function TableBody({ word, deleteWord, updateWord }) {
               onChange={handleChange}
               value={value.tags || ""}
               name={"tags"}
+              color="secondary"
             />
           </td>
         </>
       ) : (
         <>
           <td>{english}</td>
-          <td align="right">{transcription}</td>
-          <td align="right">{russian}</td>
-          <td align="right">{tags}</td>
+          <td>{transcription}</td>
+          <td>{russian}</td>
+          <td>{tags}</td>
         </>
       )}
 
-      <td align="right">
+      <td>
         {isEditable ? (
           <div className="table-buttons">
             <Button

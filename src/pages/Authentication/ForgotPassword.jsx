@@ -1,27 +1,22 @@
-import React, { useRef, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
 import { Link } from "react-router-dom";
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Alert,
   Grid,
   Box,
   Typography,
   Container,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
 export default function ForgotPassword() {
-  // const [email, setEmail] = useState("");
   const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -34,7 +29,7 @@ export default function ForgotPassword() {
       setMessage("");
       setError("");
       setLoading(true);
-      await resetPassword(data.get("email"), data.get("password"));
+      await resetPassword(data.get("email"));
       setMessage("Check your inbox for further instructions");
     } catch {
       setError("Failed to reset password");
@@ -55,9 +50,6 @@ export default function ForgotPassword() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor:  }}>
-            <LockOutlinedIcon />
-          </Avatar>
           <Typography component="h1" variant="h5">
             Password reset
           </Typography>
@@ -78,16 +70,6 @@ export default function ForgotPassword() {
               name="email"
               autoComplete="email"
               autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
             />
 
             <Button

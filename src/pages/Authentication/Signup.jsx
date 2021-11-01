@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -16,15 +17,16 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function SignUp() {
-  const { signup, error, setError, loading, setLoading } = useAuth();
+  const { signup } = useAuth();
   const history = useHistory();
-
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    // if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-    //   return setError("Passwords do not match");
-    // }
+    if (data.get("password") !== data.get("repeat-password")) {
+      return setError("Passwords do not match");
+    }
 
     try {
       setError("");
@@ -64,27 +66,6 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid> */}
-              {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -104,6 +85,17 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="repeat-password"
+                  label="Repeat password"
+                  type="password"
+                  id="repeat-password"
+                  autoComplete="repeat-password"
                 />
               </Grid>
             </Grid>

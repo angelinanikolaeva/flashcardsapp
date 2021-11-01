@@ -26,7 +26,7 @@ const TableContainer = observer(() => {
     });
   };
   return (
-    <>
+    <div className="words-table-container">
       <TableForm
         data={wordStore.words}
         setNewWord={wordStore.setWord}
@@ -55,7 +55,7 @@ const TableContainer = observer(() => {
       ) : (
         <h2 className="words-table-none"> No added words </h2>
       )}
-    </>
+    </div>
   );
 });
 

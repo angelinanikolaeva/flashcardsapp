@@ -1,7 +1,11 @@
+@import "./styles/fonts";
+@import "./styles/colors";
+
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 h1,
@@ -24,4 +28,8 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+body {
+  font-family: $mainfont;
 }
