@@ -1,5 +1,3 @@
-import React from "react";
-import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import "./Welcome.scss";
 import image from "../../assets/images/park.png";

@@ -3,7 +3,6 @@
   "homepage": "https://angelinanikolaeva.github.io/flashcardsapp/",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://itgirlschool.justmakeit.ru",
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
@@ -51,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "miragejs": "^0.1.42"
   }
 }
