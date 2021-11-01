@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/flashcardsapp/static/css/main.3fd8e7e6.chunk.css",
+    "main.js": "/flashcardsapp/static/js/main.c0d682a1.chunk.js",
+    "main.js.map": "/flashcardsapp/static/js/main.c0d682a1.chunk.js.map",
+    "runtime-main.js": "/flashcardsapp/static/js/runtime-main.93c978b2.js",
+    "runtime-main.js.map": "/flashcardsapp/static/js/runtime-main.93c978b2.js.map",
+    "static/js/2.ba290781.chunk.js": "/flashcardsapp/static/js/2.ba290781.chunk.js",
+    "static/js/2.ba290781.chunk.js.map": "/flashcardsapp/static/js/2.ba290781.chunk.js.map",
+    "static/js/3.3e60079f.chunk.js": "/flashcardsapp/static/js/3.3e60079f.chunk.js",
+    "static/js/3.3e60079f.chunk.js.map": "/flashcardsapp/static/js/3.3e60079f.chunk.js.map",
+    "index.html": "/flashcardsapp/index.html",
+    "static/css/main.3fd8e7e6.chunk.css.map": "/flashcardsapp/static/css/main.3fd8e7e6.chunk.css.map",
+    "static/js/2.ba290781.chunk.js.LICENSE.txt": "/flashcardsapp/static/js/2.ba290781.chunk.js.LICENSE.txt",
+    "static/media/park.f5308600.png": "/flashcardsapp/static/media/park.f5308600.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93c978b2.js",
+    "static/js/2.ba290781.chunk.js",
+    "static/css/main.3fd8e7e6.chunk.css",
+    "static/js/main.c0d682a1.chunk.js"
+  ]
+}
