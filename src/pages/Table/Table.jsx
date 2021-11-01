@@ -5,10 +5,10 @@ function Table(props) {
         <thead className="words-tablehead">
           <tr className="words-tablerow">
             <th>Word</th>
-            <th align="right">Transcription</th>
-            <th align="right">Translation</th>
-            <th align="right">Topic</th>
-            <th align="right">Actions</th>
+            <th>Transcription</th>
+            <th>Translation</th>
+            <th>Topic</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody className="words-tablebody">{props.children}</tbody>

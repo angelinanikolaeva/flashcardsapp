@@ -1,10 +1,16 @@
 $primaryColor: #fcd9c2;
-$darkColor: #544b64;
-$purple: #4f3a75;
-$lavanda: #d6cae8;
-$cream: #fcdede;
-$yellow: #fcedc6;
-$sun: #ffc720;
-$grey: #f7f6f4;
+$textColor: #370084;
+// $textColor: #54138c;
+$hoverColor: #940af3;
+// $iconColor: #dad6e0;
+// $hoverColor: #d6cae8;
+$cardColor: #fcdede;
+$backgroundColor: #fcedc6;
+$brightColor: #ffc720;
 $whiteColor: #ffff;
-$pink: #f00c93;
+$contrastColor: #f00c93;
+
+@mixin background-opacity($color, $opacity: 0.3) {
+  background: $color;
+  background: rgba($color, $opacity);
+}

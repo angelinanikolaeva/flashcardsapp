@@ -7,15 +7,16 @@ import Button from "../../components/Button";
 import { TextField } from "@mui/material";
 import useWordValidation from "../../hooks/useWordValidation";
 
-function TableBody({ word, data, setData, wordId }) {
-  const { english, russian, transcription, tags } = word;
+function TableBody({ word, deleteWord, updateWord }) {
+  const { id, english, russian, transcription, tags } = word || {};
   const { errors, inputValidation } = useWordValidation();
   const [isEditable, toogleEditable] = useState(false);
   const [value, setValue] = useState({
-    english: english,
-    russian: russian,
-    transcription: transcription,
-    tags: tags,
+    id,
+    english,
+    russian,
+    transcription,
+    tags,
   });
 
   const handleChange = (e) => {
@@ -25,33 +26,6 @@ function TableBody({ word, data, setData, wordId }) {
     setValue((prevWord) => {
       return { ...prevWord, [name]: value };
     });
-  };
-
-  const updateWord = async () => {
-    try {
-      const res = await fetch(`/api/words/${wordId}`, {
-        method: "PATCH",
-        body: JSON.stringify(value),
-      });
-      const json = await res.json();
-
-      const dataCopy = [...data];
-      const index = data.findIndex((m) => m.id === wordId);
-      dataCopy[index] = json.word;
-      setData(dataCopy);
-      toogleEditable(false);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const deleteWord = async () => {
-    try {
-      await fetch(`/api/words/${wordId}`, { method: "DELETE" });
-      setData(data.filter((m) => m.id !== wordId));
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleCancel = () => {
@@ -72,6 +46,7 @@ function TableBody({ word, data, setData, wordId }) {
               onChange={handleChange}
               value={value.english || ""}
               name={"english"}
+              color="secondary"
             />
           </td>
           <td>
@@ -83,6 +58,7 @@ function TableBody({ word, data, setData, wordId }) {
               onChange={handleChange}
               value={value.transcription || ""}
               name={"transcription"}
+              color="secondary"
             />
           </td>
           <td>
@@ -94,6 +70,7 @@ function TableBody({ word, data, setData, wordId }) {
               onChange={handleChange}
               value={value.russian || ""}
               name={"russian"}
+              color="secondary"
             />
           </td>
           <td>
@@ -105,23 +82,24 @@ function TableBody({ word, data, setData, wordId }) {
               onChange={handleChange}
               value={value.tags || ""}
               name={"tags"}
+              color="secondary"
             />
           </td>
         </>
       ) : (
         <>
           <td>{english}</td>
-          <td align="right">{transcription}</td>
-          <td align="right">{russian}</td>
-          <td align="right">{tags}</td>
+          <td>{transcription}</td>
+          <td>{russian}</td>
+          <td>{tags}</td>
         </>
       )}
 
-      <td align="right">
+      <td>
         {isEditable ? (
           <div className="table-buttons">
             <Button
-              onClick={updateWord}
+              onClick={() => updateWord(value)}
               disabled={Object.values(errors).some((x) => x[0] === true)}
             >
               <SaveIcon />
@@ -135,7 +113,7 @@ function TableBody({ word, data, setData, wordId }) {
             <Button onClick={toogleEditable}>
               <EditIcon />
             </Button>
-            <Button onClick={deleteWord}>
+            <Button onClick={() => deleteWord(id)}>
               <DeleteIcon />
             </Button>
           </div>

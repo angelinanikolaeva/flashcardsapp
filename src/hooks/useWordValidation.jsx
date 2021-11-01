@@ -13,12 +13,12 @@ const useWordValidation = () => {
     } else
       switch (name) {
         case "english":
-          value.match(/^[A-Za-z0-9]*$/)
+          value.match(/^[a-zA-Z0-9_ ]*$/)
             ? setError({ ...errors, [name]: [false, ""] })
             : setError({ ...errors, [name]: [true, "Not in english"] });
           break;
         case "russian":
-          value.match(/^[а-яё -]+$/i)
+          value.match(/^[а-яёА-Я0-9 _,-]+$/i)
             ? setError({ ...errors, [name]: [false, ""] })
             : setError({ ...errors, [name]: [true, "Not in Russian!"] });
           break;
@@ -28,7 +28,7 @@ const useWordValidation = () => {
             : setError({ ...errors, [name]: [true, "EMPTY!"] });
           break;
         case "tags":
-          value.match(/^[а-яё -]+$/i)
+          value.match(/^[а-яёА-Я0-9 _,-]+$/i)
             ? setError({ ...errors, [name]: [false, ""] })
             : setError({ ...errors, [name]: [true, "Not in russian"] });
           break;

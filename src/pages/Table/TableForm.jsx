@@ -1,37 +1,23 @@
-import { useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { TextField } from "@mui/material";
 import Button from "../../components/Button";
 import useWordValidation from "../../hooks/useWordValidation";
 
-const TableForm = ({ data, setData }) => {
+const TableForm = ({
+  setNewWord,
+  newWord,
+  createWord,
+  isCreated,
+  setCreated,
+}) => {
   const { errors, setError, inputValidation } = useWordValidation();
-  const [newWord, setNewWord] = useState({
-    english: "",
-    transcription: "",
-    russian: "",
-    tags: "",
-  });
+
   const handleInputChange = (e) => {
+    setCreated("");
     const name = e.target.name;
     const value = e.target.value;
     inputValidation(name, value);
-    setNewWord((word) => {
-      return { ...word, [name]: value };
-    });
-  };
-  const createWord = async () => {
-    try {
-      const res = await fetch("/api/words", {
-        method: "POST",
-        body: JSON.stringify(newWord),
-      });
-      const json = await res.json();
-      setData([...data, json.word]);
-      setNewWord({ english: "", transcription: "", russian: "", tags: "" });
-    } catch (err) {
-      console.log(err);
-    }
+    setNewWord({ ...newWord, [name]: value });
   };
 
   const submitForm = async (event) => {
@@ -52,7 +38,7 @@ const TableForm = ({ data, setData }) => {
 
   return (
     <form className="words-table-form" onSubmit={submitForm}>
-      <div className="">
+      <div className="words-table-inputs">
         <TextField
           error={errors.english[0]}
           label={errors.english[0] ? errors.english[1] : "English word"}
@@ -61,6 +47,7 @@ const TableForm = ({ data, setData }) => {
           value={newWord.english || ""}
           name="english"
           onChange={handleInputChange}
+          color="secondary"
         />
         <TextField
           error={errors.transcription[0]}
@@ -72,6 +59,7 @@ const TableForm = ({ data, setData }) => {
           value={newWord.transcription || ""}
           name="transcription"
           onChange={handleInputChange}
+          color="secondary"
         />
         <TextField
           error={errors.russian[0]}
@@ -81,6 +69,7 @@ const TableForm = ({ data, setData }) => {
           value={newWord.russian || ""}
           name="russian"
           onChange={handleInputChange}
+          color="secondary"
         />
         <TextField
           error={errors.tags[0]}
@@ -90,11 +79,13 @@ const TableForm = ({ data, setData }) => {
           value={newWord.tags || ""}
           name="tags"
           onChange={handleInputChange}
+          color="secondary"
         />
       </div>
-      <Button type="submit" className="table-form-button">
+      <Button type="submit" className="words-table-form-button">
         <AddCircleIcon fontSize="large" />
       </Button>
+      {isCreated && <p>{isCreated}</p>}
     </form>
   );
 };
