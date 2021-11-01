@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import "./Table.scss";
 import TableBody from "./TableBody";
 import TableForm from "./TableForm";
@@ -54,7 +53,7 @@ const TableContainer = observer(() => {
           ))}
         </Table>
       ) : (
-        <h2 className="words-table-none"> Нет добавленных слов </h2>
+        <h2 className="words-table-none"> No added words </h2>
       )}
     </>
   );

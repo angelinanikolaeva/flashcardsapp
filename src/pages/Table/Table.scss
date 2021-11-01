@@ -7,10 +7,15 @@
   justify-content: center;
 }
 .words-tablehead {
-  background-color: $purple;
+  background-color: $textColor;
+  height: 50px;
 }
 .words-tablebody {
-  background-color: $yellow;
+  background-color: rgba(255, 255, 255, 0.15);
+  // @include background-opacity(darken($primaryColor, 10%), 0.7, 10px);
+  // @include background-blur($primaryColor, 10px);
+  // backdrop-filter: blur(5px);
+  // background-color: $backgroundColor;
 }
 
 .words-table {
@@ -33,15 +38,6 @@
   padding: 10px;
   text-align: center;
   //   border-right: 1px solid #ddd;
-}
-td {
-  font: "Josefin Sans", sans-serif;
-  p {
-    margin-top: 23px;
-  }
-  input {
-    font: "Josefin Sans", sans-serif;
-  }
 }
 
 .words-table th {
@@ -72,8 +68,7 @@ td {
   display: flex;
   align-content: center;
   align-items: center;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin: 2rem 2rem;
 }
 
 .table-form-button {

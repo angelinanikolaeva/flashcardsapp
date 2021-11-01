@@ -38,7 +38,7 @@ const TableForm = ({
 
   return (
     <form className="words-table-form" onSubmit={submitForm}>
-      <div className="">
+      <div className="words-table-inputs">
         <TextField
           error={errors.english[0]}
           label={errors.english[0] ? errors.english[1] : "English word"}

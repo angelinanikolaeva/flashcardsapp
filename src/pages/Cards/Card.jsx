@@ -15,14 +15,10 @@ const Card = observer(() => {
   useEffect(() => inputRef.current && inputRef.current.focus());
 
   const flipChange = () => {
-    // const newData = [...wordStore.words];
-    const index = wordStore.words.findIndex(
-      (obj) => obj.id === wordStore.words[slide].id
-    );
-    // newData[index].isFlipped = true;
-    setFlipped({ ...isFlipped, [index]: true });
-    // wordStore.setData(newData);
-    setWordCount(wordCount + 1);
+    if (isFlipped[wordStore.words[slide].id] !== true) {
+      setFlipped({ ...isFlipped, [wordStore.words[slide].id]: true });
+      setWordCount(wordCount + 1);
+    }
   };
   const [slide, setSlide] = useState(0);
   const [wordCount, setWordCount] = useState(0);
@@ -51,14 +47,14 @@ const Card = observer(() => {
           </Button>
           <CardInner
             key={wordStore.words[slide].id}
-            isFlipped={isFlipped[slide]}
+            isFlipped={isFlipped[wordStore.words[slide].id]}
             flipChange={flipChange}
             data={wordStore.words}
             slide={slide}
             innerRef={inputRef}
           />
           <h2 className="card__wordcount">
-            Выучено:
+            Learned:
             <p>
               {wordCount}/{wordStore.words.length}
             </p>

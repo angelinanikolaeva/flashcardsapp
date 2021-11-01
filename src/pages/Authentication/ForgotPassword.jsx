@@ -1,6 +1,7 @@
-// import * as React from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -8,6 +9,7 @@ import {
   TextField,
   FormControlLabel,
   Checkbox,
+  Alert,
   Grid,
   Box,
   Typography,
@@ -18,23 +20,27 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function Login() {
-  const { login, error, setError, loading, setLoading } = useAuth();
-  const history = useHistory();
+export default function ForgotPassword() {
+  // const [email, setEmail] = useState("");
+  const { resetPassword } = useAuth();
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
     try {
+      setMessage("");
       setError("");
       setLoading(true);
-      await login(data.get("email"), data.get("password"));
-      history.push("/");
+      await resetPassword(data.get("email"), data.get("password"));
+      setMessage("Check your inbox for further instructions");
     } catch {
-      setError("Failed to log in");
-    } finally {
-      setLoading(false);
+      setError("Failed to reset password");
     }
+
+    setLoading(false);
   };
 
   return (
@@ -49,13 +55,14 @@ export default function Login() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor:  }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Log in
+            Password reset
           </Typography>
-          {error && <div variant="danger">{error}</div>}
+          {error && <Alert variant="danger">{error}</Alert>}
+          {message && <Alert variant="success">{message}</Alert>}
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -82,10 +89,7 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               disabled={loading}
               type="submit"
@@ -93,17 +97,17 @@ export default function Login() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Reset Password
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/forgot" variant="body2">
-                  Forgot password?
+                <Link to="/login" variant="body2">
+                  Remember password?
                 </Link>
               </Grid>
               <Grid item>
                 <Link to="/signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  Sign Up
                 </Link>
               </Grid>
             </Grid>
@@ -112,4 +116,29 @@ export default function Login() {
       </Container>
     </ThemeProvider>
   );
+  //     <>
+  //       <Card>
+  //         <Card.Body>
+  //           <h2 className="text-center mb-4">Password Reset</h2>
+  //           {error && <Alert variant="danger">{error}</Alert>}
+  //           {message && <Alert variant="success">{message}</Alert>}
+  //           <Form onSubmit={handleSubmit}>
+  //             <Form.Group id="email">
+  //               <Form.Label>Email</Form.Label>
+  //               <Form.Control type="email" ref={emailRef} required />
+  //             </Form.Group>
+  //             <Button disabled={loading} className="w-100" type="submit">
+  //               Reset Password
+  //             </Button>
+  //           </Form>
+  //           <div className="w-100 text-center mt-3">
+  //             <Link to="/login">Login</Link>
+  //           </div>
+  //         </Card.Body>
+  //       </Card>
+  //       <div className="w-100 text-center mt-2">
+  //         Need an account? <Link to="/signup">Sign Up</Link>
+  //       </div>
+  //     </>
+  //   );
 }

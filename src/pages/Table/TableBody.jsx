@@ -7,16 +7,16 @@ import Button from "../../components/Button";
 import { TextField } from "@mui/material";
 import useWordValidation from "../../hooks/useWordValidation";
 
-function TableBody({ word, data, deleteWord, updateWord }) {
+function TableBody({ word, deleteWord, updateWord }) {
   const { id, english, russian, transcription, tags } = word || {};
   const { errors, inputValidation } = useWordValidation();
   const [isEditable, toogleEditable] = useState(false);
   const [value, setValue] = useState({
-    id: id,
-    english: english,
-    russian: russian,
-    transcription: transcription,
-    tags: tags,
+    id,
+    english,
+    russian,
+    transcription,
+    tags,
   });
 
   const handleChange = (e) => {
