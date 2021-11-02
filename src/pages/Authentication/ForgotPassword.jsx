@@ -83,12 +83,12 @@ export default function ForgotPassword() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/login" variant="body2">
+                <Link to="/flashcardsapp/login" variant="body2">
                   Remember password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/signup" variant="body2">
+                <Link to="/flashcardsapp/signup" variant="body2">
                   Sign Up
                 </Link>
               </Grid>

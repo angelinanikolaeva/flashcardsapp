@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import Button from "./Button";
+import { Alert } from "@mui/material";
 
 function Navbar() {
   const { currentUser, logout } = useAuth();
@@ -38,19 +39,19 @@ function Navbar() {
           )}
         </button>
         <div className="logo">
-          <Link to="/">VocaVoca</Link>
+          <Link to="/flashcardsapp/">VocaVoca</Link>
         </div>
         <div className={dropdown ? "content dropdown" : "content"}>
           <ul className="links">
             {currentUser ? (
               <>
                 <li>
-                  <Link onClick={handleMenu} to="/dictionary">
+                  <Link onClick={handleMenu} to="/flashcardsapp/dictionary">
                     Dictionary
                   </Link>
                 </li>
                 <li>
-                  <Link onClick={handleMenu} to="/game">
+                  <Link onClick={handleMenu} to="/flashcardsapp/game">
                     Learning
                   </Link>
                 </li>
@@ -58,19 +59,19 @@ function Navbar() {
             ) : (
               <>
                 <li>
-                  <Link onClick={handleMenu} to="/about">
+                  <Link onClick={handleMenu} to="/flashcardsapp/about">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link onClick={handleMenu} to="/howto">
+                  <Link onClick={handleMenu} to="/flashcardsapp/howto">
                     How To Use
                   </Link>
                 </li>
               </>
             )}
             <li>
-              <Link to="/contacts">Contacts</Link>
+              <Link to="/flashcardsapp/contacts">Contacts</Link>
             </li>
           </ul>
         </div>
@@ -78,9 +79,10 @@ function Navbar() {
           {currentUser ? (
             <Button onClick={handleLogout}>Log out</Button>
           ) : (
-            <Link to="/login">Log in</Link>
+            <Link to="/flashcardsapp/login">Log in</Link>
           )}
         </div>
+        {error && <Alert variant="danger">{error}</Alert>}
       </nav>
     </div>
   );

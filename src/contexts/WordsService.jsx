@@ -9,12 +9,12 @@ export async function getWordById(id) {
 }
 
 export async function addWord(word) {
-  return await axios.post("/api/words", word);
+  return await axios.post("/api/words/add", word);
 }
 
 export async function updateWord(word) {
-  return await axios.patch(`/api/words/${word.id}`, word);
+  return await axios.post(`/api/words/${word.id}/update`, word);
 }
 export async function deleteWord(id) {
-  return await axios.delete(`/api/words/${id}`);
+  return await axios.post(`/api/words/${id}/delete`);
 }

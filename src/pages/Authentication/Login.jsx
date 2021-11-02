@@ -1,4 +1,3 @@
-// import * as React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import {
@@ -10,6 +9,7 @@ import {
   Checkbox,
   Grid,
   Box,
+  Alert,
   Typography,
   Container,
 } from "@mui/material";
@@ -55,7 +55,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          {error && <div variant="danger">{error}</div>}
+          {error && <Alert variant="danger">{error}</Alert>}
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -97,12 +97,12 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link to="/forgot" variant="body2">
+                <Link to="/flashcardsapp/forgot" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/signup" variant="body2">
+                <Link to="/flashcardsapp/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

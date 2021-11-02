@@ -8,6 +8,7 @@ import {
   TextField,
   Grid,
   Box,
+  Alert,
   Typography,
   Container,
 } from "@mui/material";
@@ -55,7 +56,7 @@ export default function SignUp() {
           <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
-          {error && <h1 variant="danger">{error}</h1>}
+          {error && <Alert variant="danger">{error}</Alert>}
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -110,7 +111,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/login" variant="body2">
+                <Link to="/flashcardsapp/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

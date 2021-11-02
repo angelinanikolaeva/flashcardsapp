@@ -20,24 +20,26 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <PublicRoute path="/forgot">
+            <PublicRoute path="/flashcardsapp/forgot">
               <ForgotPassword />
             </PublicRoute>
-            <PrivateRoute path="/update-profile">UPDATE</PrivateRoute>
-            <PublicRoute path="/signup">
+            <PrivateRoute path="/flashcardsapp/update-profile">
+              UPDATE
+            </PrivateRoute>
+            <PublicRoute path="/flashcardsapp/signup">
               <Signup />
             </PublicRoute>
-            <PublicRoute path="/login">
+            <PublicRoute path="/flashcardsapp/login">
               <Login />
             </PublicRoute>
-            <Route path="/about">About</Route>
-            <PrivateRoute path="/game">
+            <Route path="/flashcardsapp/about">About</Route>
+            <PrivateRoute path="/flashcardsapp/game">
               <Card />
             </PrivateRoute>
-            <PrivateRoute path="/dictionary">
+            <PrivateRoute path="/flashcardsapp/dictionary">
               <TableContainer />
             </PrivateRoute>
-            <Route exact path="/">
+            <Route exact path="/flashcardsapp/">
               <Welcome />
             </Route>
             <Route component={NotFound} />
