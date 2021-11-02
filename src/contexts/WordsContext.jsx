@@ -7,7 +7,6 @@ import {
   updateWord,
   deleteWord,
 } from "./WordsService";
-// import wordsApi from "../assets/data/words.json";
 
 const WordsContext = createContext();
 

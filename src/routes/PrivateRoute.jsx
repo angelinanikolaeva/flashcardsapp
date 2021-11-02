@@ -11,7 +11,7 @@ function PrivateRoute({ children, ...rest }) {
           children
         ) : (
           <Redirect
-            to="/flashcardsapp/login"
+            to="/login"
             // to={{
             //   pathname: "/login",
             //   // state: { from: location },

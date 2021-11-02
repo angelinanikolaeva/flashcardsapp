@@ -11,7 +11,7 @@ function PublicRoute({ children, ...rest }) {
           children
         ) : (
           <Redirect
-            to="/flashcardsapp/"
+            to="/"
             // to={{
             //   pathname: "/",
             //   state: { from: location },

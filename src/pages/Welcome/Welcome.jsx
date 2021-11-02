@@ -38,7 +38,7 @@ const Welcome = () => {
             </ul>
           </div>
           <Link
-            to={currentUser ? "/flashcards/dictionary" : "/flashcards/login"}
+            to={currentUser ? "/dictionary" : "/login"}
             className="welcome-button"
           >
             START

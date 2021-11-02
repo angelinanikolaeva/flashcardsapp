@@ -39,19 +39,19 @@ function Navbar() {
           )}
         </button>
         <div className="logo">
-          <Link to="/flashcardsapp/">VocaVoca</Link>
+          <Link to="/">VocaVoca</Link>
         </div>
         <div className={dropdown ? "content dropdown" : "content"}>
           <ul className="links">
             {currentUser ? (
               <>
                 <li>
-                  <Link onClick={handleMenu} to="/flashcardsapp/dictionary">
+                  <Link onClick={handleMenu} to="/dictionary">
                     Dictionary
                   </Link>
                 </li>
                 <li>
-                  <Link onClick={handleMenu} to="/flashcardsapp/game">
+                  <Link onClick={handleMenu} to="/game">
                     Learning
                   </Link>
                 </li>
@@ -59,12 +59,12 @@ function Navbar() {
             ) : (
               <>
                 <li>
-                  <Link onClick={handleMenu} to="/flashcardsapp/about">
+                  <Link onClick={handleMenu} to="/about">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link onClick={handleMenu} to="/flashcardsapp/howto">
+                  <Link onClick={handleMenu} to="/howto">
                     How To Use
                   </Link>
                 </li>
@@ -79,7 +79,7 @@ function Navbar() {
           {currentUser ? (
             <Button onClick={handleLogout}>Log out</Button>
           ) : (
-            <Link to="/flashcardsapp/login">Log in</Link>
+            <Link to="/login">Log in</Link>
           )}
         </div>
         {error && <Alert variant="danger">{error}</Alert>}
