@@ -71,7 +71,7 @@ function Navbar() {
               </>
             )}
             <li>
-              <Link to="/flashcardsapp/contacts">Contacts</Link>
+              <Link to="/contacts">Contacts</Link>
             </li>
           </ul>
         </div>
